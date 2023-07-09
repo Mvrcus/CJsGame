@@ -58,9 +58,10 @@ def main():
         character = Character(name)
         characters.append(character)
 
-    # Play the game
-    while True:
-        print("\n=== Game Start ===")
+    # Play the game for three days
+    for day in range(1, 4):
+        input("\nPress Enter to proceed to the next day...")
+        print(f"\n=== Day {day} Start ===")
         for character in characters:
             character.generate_hunger_level()
             print(f"\n{character.name}'s initial hunger level: {character.hunger_level}")
@@ -78,16 +79,17 @@ def main():
                     if character.hunger_level <= 0:
                         character.hunger_level = 0
                     print(f"{character.name}'s hunger level after eating: {character.hunger_level}")
+                    character.generate_hunger_level()  # Regenerate attributes if character eats
                 else:
                     print(f"\n{character.name} has decided not to eat because they don't feel the need to at the moment.")
             else:
                 print(f"{character.name} is not feeling hungry.")
 
-        play_again = input("\nDo you want to play again? (yes/no): ")
-        if play_again.lower() != "yes":
-            break
-
-    print("\nGame Over. Thank you for playing!")
+    play_again = input("\nWould you like to continue playing? (yes/no): ")
+    if play_again.lower() == "yes":
+        main()
+    else:
+        print("\nGame Over. Thank you for playing!")
 
 if __name__ == "__main__":
     main()
