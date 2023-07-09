@@ -60,7 +60,7 @@ def main():
 
     # Play the game for three days
     for day in range(1, 4):
-        input("\nPress Enter to proceed to the next day...")
+        input(f"\nPress Enter to start Day {day}...")
         print(f"\n=== Day {day} Start ===")
         for character in characters:
             character.generate_hunger_level()
@@ -84,6 +84,9 @@ def main():
                     print(f"\n{character.name} has decided not to eat because they don't feel the need to at the moment.")
             else:
                 print(f"{character.name} is not feeling hungry.")
+
+        if day < 3:
+            input("\nPress Enter to continue to the next day...")
 
     play_again = input("\nWould you like to continue playing? (yes/no): ")
     if play_again.lower() == "yes":
